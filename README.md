@@ -1,3 +1,3 @@
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=amir0ff&show_icons=true&count_private=true&hide=contribs)
+![amir0ff's Stats](https://github-readme-stats.vercel.app/api?username=amir0ff&theme=dark&show_icons=true&hide_border=true&count_private=true)
 
-![GitHub streak stats](https://github-readme-streak-stats.herokuapp.com/?user=amir0ff)
+![amir0ff's Streak](https://github-readme-streak-stats.herokuapp.com/?user=amir0ff&theme=dark&hide_border=true)
