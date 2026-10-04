@@ -18,15 +18,15 @@ graph TD
     User["User Prompt"] --> RAG
 
     subgraph Harness["Agent Harness"]
-        RAG["Retrieval (RAG/Grep)"] --> CW
+        RAG["Context Retrieval<br/>(Search / Grep / RAG)"] --> CW
         
         subgraph Loop["Agent ReAct Loop"]
-            CW["Context Window"] -->|"1. Context + History"| LLM["LLM Engine (Claude/Codex)"]
-            LLM -->|"2a. Tool Call Request"| TE["Tool Execution (Read/Write)"]
-            TE -->|"3. Tool Output / Observation"| CW
+            CW["Context Window"] -->|"1. Context + History"| LLM["LLM / Model"]
+            LLM -->|"2a. Tool Call"| TE["Tool Execution"]
+            TE -->|"3. Observation"| CW
         end
 
-        TE --> WorkSpace["[ Workspace / File System ]"]
+        TE --> WorkSpace["Workspace / File System"]
     end
 
     %% The lengthened arrow (---->) forces FinalAnswer down multiple ranks %%
