@@ -15,32 +15,47 @@
 title: Agent Harness Architecture
 ---
 graph TD
-    User["User Prompt"] --> RAG
+    User("User Prompt") --> RAG
 
     subgraph Harness["Agent Harness"]
-        RAG["Context Retrieval<br/>(Search / Grep / RAG)"] --> CW
-        
+        RAG("Context Retrieval<br/>Search · Grep · RAG") --> CW
+
         subgraph Loop["Agent ReAct Loop"]
-            CW["Context Window"] -->|"1. Context + History"| LLM["LLM / Model"]
-            LLM -->|"2a. Tool Call"| TE["Tool Execution"]
-            TE -->|"3. Observation"| CW
+            CW("Context Window")
+            LLM("LLM / Model")
+            TE("Tool Execution")
+
+            CW -->|"1 · Context + History"| LLM
+            LLM -->|"2a · Tool Call"| TE
+            TE -->|"3 · Observation"| CW
         end
 
-        TE --> WorkSpace["Workspace / File System"]
+        TE --> WorkSpace[("Workspace / File System")]
     end
 
-    %% The lengthened arrow (---->) forces FinalAnswer down multiple ranks %%
-    LLM ---->|"2b. Final Response"| FinalAnswer["Final Output to User"]
+    %% Lengthened arrow keeps final output visually separated
+    LLM ---->|"2b · Final Response"| FinalAnswer("Final Output to User")
     WorkSpace ~~~ FinalAnswer
 
-    %% Explicit Color Styles %%
-    style User fill:#2563eb,stroke:#1d4ed8,color:#ffffff,stroke-width:2px
-    style FinalAnswer fill:#16a34a,stroke:#15803d,color:#ffffff,stroke-width:2px
-    style LLM fill:#7c3aed,stroke:#6d28d9,color:#ffffff,stroke-width:2px
-    style CW fill:#0284c7,stroke:#0369a1,color:#ffffff,stroke-width:2px
-    style TE fill:#d97706,stroke:#b45309,color:#ffffff,stroke-width:2px
-    style RAG fill:#374151,stroke:#4b5563,color:#ffffff,stroke-width:1px
-    style WorkSpace fill:#1f2937,stroke:#374151,color:#ffffff,stroke-width:1px
-    style Harness fill:none,stroke:#6b7280,stroke-width:2px,stroke-dasharray: 5 5
-    style Loop fill:none,stroke:#9ca3af,stroke-width:2px
+    %% Node styles
+    classDef input fill:#2563eb,stroke:#3b82f6,color:#ffffff,stroke-width:1.5px
+    classDef context fill:#0369a1,stroke:#0ea5e9,color:#ffffff,stroke-width:1.5px
+    classDef model fill:#6d28d9,stroke:#8b5cf6,color:#ffffff,stroke-width:1.5px
+    classDef tool fill:#b45309,stroke:#f59e0b,color:#ffffff,stroke-width:1.5px
+    classDef retrieval fill:#1e293b,stroke:#475569,color:#e2e8f0,stroke-width:1px
+    classDef storage fill:#111827,stroke:#475569,color:#cbd5e1,stroke-width:1px
+    classDef output fill:#15803d,stroke:#22c55e,color:#ffffff,stroke-width:1.5px
+
+    %% Apply node styles
+    class User input
+    class RAG retrieval
+    class CW context
+    class LLM model
+    class TE tool
+    class WorkSpace storage
+    class FinalAnswer output
+
+    %% Container styles
+    style Harness fill:#0f172a10,stroke:#64748b,stroke-width:1.5px,stroke-dasharray:5 5
+    style Loop fill:#0f172a08,stroke:#94a3b8,stroke-width:1px
 ```
