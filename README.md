@@ -37,14 +37,27 @@ graph TD
     LLM ---->|"2b · Final Response"| FinalAnswer("Final Output to User")
     WorkSpace ~~~ FinalAnswer
 
+    %% Theme: Carbon Glow
+    %% Dark charcoal surfaces with restrained semantic neon accents.
+    %% Designed to visually match dark GitHub stats/streak/language cards.
+
     %% Node styles
-    classDef input fill:#2563eb,stroke:#3b82f6,color:#ffffff,stroke-width:1.5px
-    classDef context fill:#0369a1,stroke:#0ea5e9,color:#ffffff,stroke-width:1.5px
-    classDef model fill:#6d28d9,stroke:#8b5cf6,color:#ffffff,stroke-width:1.5px
-    classDef tool fill:#b45309,stroke:#f59e0b,color:#ffffff,stroke-width:1.5px
-    classDef retrieval fill:#1e293b,stroke:#475569,color:#e2e8f0,stroke-width:1px
-    classDef storage fill:#111827,stroke:#475569,color:#cbd5e1,stroke-width:1px
-    classDef output fill:#15803d,stroke:#22c55e,color:#ffffff,stroke-width:1.5px
+    %% Green = entry / successful completion
+    classDef input fill:#1c1c1c,stroke:#39d353,color:#f0f0f0,stroke-width:1.5px
+    classDef output fill:#1c1c1c,stroke:#39d353,color:#f0f0f0,stroke-width:1.5px
+
+    %% Blue = context / active information state
+    classDef context fill:#1c1c1c,stroke:#58a6ff,color:#f0f0f0,stroke-width:1.5px
+
+    %% Purple = model / intelligence
+    classDef model fill:#1c1c1c,stroke:#a371f7,color:#f0f0f0,stroke-width:1.5px
+
+    %% Amber = tool execution / action
+    classDef tool fill:#1c1c1c,stroke:#f0a000,color:#f0f0f0,stroke-width:1.5px
+
+    %% Gray = retrieval / infrastructure / persistence
+    classDef retrieval fill:#1c1c1c,stroke:#8b949e,color:#c9c9c9,stroke-width:1px
+    classDef storage fill:#1c1c1c,stroke:#8b949e,color:#c9c9c9,stroke-width:1px
 
     %% Apply node styles
     class User input
@@ -56,8 +69,11 @@ graph TD
     class FinalAnswer output
 
     %% Container styles
-    style Harness fill:#0f172a10,stroke:#64748b,stroke-width:1.5px,stroke-dasharray:5 5
-    style Loop fill:#0f172a08,stroke:#94a3b8,stroke-width:1px
+    %% Outer harness uses a brighter dashed boundary
+    style Harness fill:#1c1c1c08,stroke:#8b949e,stroke-width:1.5px,stroke-dasharray:5 5
+
+    %% Inner ReAct loop stays more subtle
+    style Loop fill:#1c1c1c05,stroke:#555555,stroke-width:1px
 ```
 <details>
 <summary><strong>How it works</strong></summary>
