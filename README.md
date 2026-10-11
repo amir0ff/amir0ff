@@ -101,3 +101,10 @@ The diagram illustrates a modern agent harness workflow in which a user prompt i
 
 Tool execution can interact with a persistent workspace or file system, allowing the agent to read, modify, and operate on external state. This cycle can repeat as needed until the model has enough information to produce the final response to the user.
 </details>
+
+## Support
+
+If you find any of my work helpful, consider supporting future development:
+
+- 💖 [Sponsor on GitHub](https://github.com/sponsors/amir0ff)
+- ☕ [Buy me a coffee on Ko-fi](https://ko-fi.com/amir0ff)
